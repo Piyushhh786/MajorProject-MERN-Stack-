@@ -1,0 +1,52 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+
+    <body>
+        <h1>Edit List</h1>
+        <form novalidate class="needs-validation" method="post" action="/listings/<%= list._id %>/edit?_method=PUT">
+            <div class="form-group mb-3">
+                <label for="title">Title: </label>
+                <input required value="<%= list.title %>" placeholder="Enter Title" class="form-control" type="text"
+                    name="list[title]" id="title">
+                <div class="invalid-feedback">
+                    Please mention Title.
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="description">Description: </label>
+                <textarea required placeholder="Enter Description" class="form-control" name="list[description]"
+                    id="description"> <%= list.description %></textarea>
+                <div class="invalid-feedback">
+                    Please mention a crispy description.
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="imgUrl">Image Link</label>
+                <input value="<%= list.image.url %>" class="form-control" placeholder="Enter image url/link" type="url"
+                    name="list[image][url]" id="imgUrl">
+            </div>
+            <div class="row">
+                <div class="form-group mb-3 col-md-4">
+                    <label for="price">Price: </label>
+                    <input required value="<%= list.price %>" placeholder="Enter Price" class="form-control" step="0.01"
+                        type="number" min="0" name="list[price]" id="price">
+                    <div class="invalid-feedback">
+                        Please mention price.
+                    </div>
+                </div>
+                <div class="form-group mb-3 col-md-8">
+                    <label for="country">Country: </label>
+                    <input required value="<%= list.country %>" placeholder="Enter Country" class="form-control"
+                        type="text" name="list[country]" id="country">
+                    <div class="invalid-feedback">Please select country.</div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group mb-3">
+                <label for="location">Location:</label>
+                <input required value="<%= list.location %>" placeholder="Enter Location" class="form-control"
+                    type="text" name="list[location]" id="location">
+                <div class="invalid-feedback">Please mention location.</div>
+            </div><br>
+            <button class="btn btn-dark mb-3">Change</button>
+        </form>

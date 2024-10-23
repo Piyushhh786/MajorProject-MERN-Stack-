@@ -1,0 +1,46 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+
+    <body>
+        <h1>
+            Listing Details:
+
+        </h1>
+        <br>
+        <div class="card offset-4" style="width: 35rem;">
+            <img style="height: 18rem;" class="card-img-top" src="<%= list.image.url %>" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text">
+                    <%=list.title %>
+                </p>
+            </div>
+        </div>
+        <br>
+        <ul>
+            <li>Description: <%= list.description %>
+            </li><br>
+            <li>Location: <%= list.location %>
+            </li><br>
+            <li>Country: <%= list.country %>
+            </li><br>
+            <li>
+                <h3>Price:&#8377; <%= list.price.toLocaleString("en-IN") %>
+                </h3>
+            </li>
+        </ul>
+        <div class="edit-delete mb-3">
+            <form action="/listings/<%= list._id %>/edit">
+                <button class="btn me-5">Edit</button>
+            </form><br>
+            <form method="post" onsubmit="return confirmDelete(event)"
+                action="/listings/<%= list._id %>/?_method=DELETE">
+                <button class="btn">Delete</button>
+            </form><br>
+        </div>
+        <br>
+        <hr>
+        <%- include("../includes/review.ejs") %>
+
+
+
+
+    </body>
